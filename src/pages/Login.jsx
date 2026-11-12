@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-useEffect(() => {
-  if (user) navigate('/', { replace: true })
-}, [user, navigate])
 
 export default function Login() {
   const { user, login } = useAuth()
@@ -12,6 +9,10 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
+
+  useEffect(() => {
+  if (user) navigate('/', { replace: true })
+}, [user, navigate])
 
   async function handleSubmit(e) {
     e.preventDefault()
