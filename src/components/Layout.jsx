@@ -12,7 +12,9 @@ export default function Layout() {
 
         <NavLink to="/" end>Dashboard</NavLink>
         <NavLink to="/items">Barang</NavLink>
-        {/* menu lain (Peminjaman, Pengembalian, Riwayat, Staff) ditambah nanti */}
+       <NavLink to="/borrow">Peminjaman</NavLink>
+<NavLink to="/return">Pengembalian</NavLink>
+<NavLink to="/history">Riwayat</NavLink>
 
         <button className="red" onClick={logout}>Logout</button>
       </aside>
