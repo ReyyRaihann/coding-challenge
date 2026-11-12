@@ -8,6 +8,7 @@ import Items from './pages/Items'
 import Borrow from './pages/Borrow'
 import Return from './pages/Return'
 import History from './pages/History'
+import Users from './pages/Users'
 
 export default function App() {
   return (
@@ -16,11 +17,15 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+          <Route path="/users" element={
+  <ProtectedRoute roles={['ADMIN']}><Users /></ProtectedRoute>
+} />
             <Route path="/" element={<Dashboard />} />
             <Route path="/items" element={<Items />} />
             <Route path="/borrow" element={<Borrow />} />
             <Route path="/return" element={<Return />} />
             <Route path="/history" element={<History />} />
+            
           </Route>
         </Routes>
       </BrowserRouter>

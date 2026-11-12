@@ -15,6 +15,7 @@ export default function Layout() {
        <NavLink to="/borrow">Peminjaman</NavLink>
 <NavLink to="/return">Pengembalian</NavLink>
 <NavLink to="/history">Riwayat</NavLink>
+{user.role === 'ADMIN' && <NavLink to="/users">Staff</NavLink>}
 
         <button className="red" onClick={logout}>Logout</button>
       </aside>
