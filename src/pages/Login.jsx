@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useState, useEffect } from 'react'
+useEffect(() => {
+  if (user) navigate('/', { replace: true })
+}, [user, navigate])
 
 export default function Login() {
-  const { login } = useAuth()
+  const { user, login } = useAuth()
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -16,7 +20,6 @@ export default function Login() {
     setBusy(true)
     try {
       await login(username, password)
-      navigate('/')
     } catch (err) {
       setError(err.message)
     } finally {
