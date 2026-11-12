@@ -30,11 +30,27 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => loadProfile(data.session))
-    const { data: listener } = supabase.auth.onAuthStateChange((_e, session) => {
-      loadProfile(session)
+    let active = true
+
+    async function init() {
+      const { data } = await supabase.auth.getSession()
+      if (active) await loadProfile(data.session)
+    }
+    init()
+
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      // INITIAL_SESSION sudah ditangani init()
+      if (event === 'INITIAL_SESSION') return
+      // tunda agar tidak bentrok dengan proses login yang sedang berjalan
+      setTimeout(() => {
+        if (active) loadProfile(session)
+      }, 0)
     })
-    return () => listener.subscription.unsubscribe()
+
+    return () => {
+      active = false
+      listener.subscription.unsubscribe()
+    }
   }, [])
 
   async function login(username, password) {
