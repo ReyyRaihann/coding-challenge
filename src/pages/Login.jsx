@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext'
 // Akun demo untuk tombol login cepat
 const DEMO = {
   admin: { username: 'admin2', password: 'PasswordBaru123' },
-  staff: { username: 'staff1', password: 'Staff12345' },
+  staff: { username: 'staff1', password: 'staff12345' },
 }
 
 export default function Login() {
