@@ -34,11 +34,23 @@ export default function Dashboard() {
       {error && <p className="error">{error}</p>}
 
       <div className="cards">
-        <div className="card"><span>Total Barang</span><strong>{stats.total}</strong></div>
-        <div className="card"><span>Barang Tersedia</span><strong>{stats.available}</strong></div>
-        <div className="card"><span>Barang Dipinjam</span><strong>{stats.borrowed}</strong></div>
-        <div className="card"><span>Total Transaksi</span><strong>{stats.loans}</strong></div>
-      </div>
+  <div className="card">
+    <div className="card-icon blue">📦</div>
+    <div><span>Total Barang</span><strong>{stats.total}</strong></div>
+  </div>
+  <div className="card">
+    <div className="card-icon green">✅</div>
+    <div><span>Barang Tersedia</span><strong>{stats.available}</strong></div>
+  </div>
+  <div className="card">
+    <div className="card-icon orange">🤝</div>
+    <div><span>Barang Dipinjam</span><strong>{stats.borrowed}</strong></div>
+  </div>
+  <div className="card">
+    <div className="card-icon purple">🧾</div>
+    <div><span>Total Transaksi</span><strong>{stats.loans}</strong></div>
+  </div>
+</div>
 
       <div className="panel">
         <h3 style={{ marginTop: 0 }}>Aktivitas Terbaru</h3>

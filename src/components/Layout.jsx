@@ -7,17 +7,22 @@ export default function Layout() {
   return (
     <div className="app">
       <aside className="sidebar">
-        <h3>Lab Inventory</h3>
-        <small>{user.full_name} ({user.role})</small>
+        <div className="brand"><span>🔬</span> Lab Inventory</div>
+        <div className="user-box">
+          <b>{user.full_name}</b>
+          <small>{user.role}</small>
+        </div>
 
-        <NavLink to="/" end>Dashboard</NavLink>
-        <NavLink to="/items">Barang</NavLink>
-       <NavLink to="/borrow">Peminjaman</NavLink>
-<NavLink to="/return">Pengembalian</NavLink>
-<NavLink to="/history">Riwayat</NavLink>
-{user.role === 'ADMIN' && <NavLink to="/users">Staff</NavLink>}
+        <NavLink to="/" end>📊 Dashboard</NavLink>
+        <NavLink to="/items">📦 Barang</NavLink>
+        <NavLink to="/borrow">📝 Peminjaman</NavLink>
+        <NavLink to="/return">↩️ Pengembalian</NavLink>
+        <NavLink to="/history">🕘 Riwayat</NavLink>
+        {user.role === 'ADMIN' && <NavLink to="/users">👥 Staff</NavLink>}
 
-        <button className="red" onClick={logout}>Logout</button>
+        <a href="#" className="logout" onClick={(e) => { e.preventDefault(); logout() }}>
+          🚪 Logout
+        </a>
       </aside>
       <main className="content">
         <Outlet />
